@@ -1,12 +1,30 @@
 "use client";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { NavLink } from "react-router-dom";
-
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 export function Navbars() {
+  const { user, Logout } = useContext(AuthContext);
+  console.log(user);
+  const handlLogout = (e) => {
+    Logout()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
-    <Navbar fluid rounded className="bg-gray-50">
+    <Navbar
+      fluid
+      rounded
+      className="bg-gray-50" >
       <Navbar.Brand>
-        <NavLink to='/' className="self-center whitespace-nowrap font-Fraunces text-2xl font-semibold dark:text-white">
+        <NavLink
+          to="/"
+          className="self-center whitespace-nowrap font-Fraunces text-2xl font-semibold dark:text-white"
+        >
           <span className="text-blue-500 text-3xl">Be</span> Active
         </NavLink>
       </Navbar.Brand>
@@ -15,34 +33,42 @@ export function Navbars() {
         <Dropdown
           arrowIcon={false}
           inline
-          label={
-            <Avatar
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded
-            />
-          }
+          label={<Avatar alt="User settings" img={user?.photoURL} rounded />}
         >
           <Dropdown.Header>
-            <span className="block text-sm font-Fraunces">Bonnie Green</span>
+            <span className="block text-sm font-Fraunces">
+              {user?.displayName}
+            </span>
             <span className="block truncate text-sm font-medium font-Fraunces">
-              name@flowbite.com
+              {user?.email}
             </span>
           </Dropdown.Header>
-          <Dropdown.Item className="font-Fraunces font-medium">Dashboard</Dropdown.Item>
-          <Dropdown.Item className="font-Fraunces font-medium">Settings</Dropdown.Item>
-          <Dropdown.Item className="font-Fraunces font-medium">Earnings</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item className="font-Fraunces font-medium">Sign out</Dropdown.Item>
         </Dropdown>
+        {user ? (
+          <Link
+            onClick={handlLogout}
+            className="flex justify-center items-center ml-4 font-Fraunces"
+          >
+            Logout
+          </Link>
+        ) : (
+          <Link
+            to="/login"
+            className="flex justify-center items-center ml-4 font-Fraunces"
+          >
+            Login
+          </Link>
+        )}
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
         <Navbar.Link>
           <NavLink
-            to="/" 
+            to="/"
             className={({ isActive }) =>
-              isActive ? "text-blue-600 font-Fraunces font-semibold" : "font-Fraunces font-semibold"
+              isActive
+                ? "text-blue-600 font-Fraunces font-semibold"
+                : "font-Fraunces font-semibold"
             }
           >
             Home
@@ -52,7 +78,9 @@ export function Navbars() {
           <NavLink
             to="/addBlog"
             className={({ isActive }) =>
-              isActive ? "text-blue-600 font-Fraunces font-semibold" : "font-Fraunces font-semibold"
+              isActive
+                ? "text-blue-600 font-Fraunces font-semibold"
+                : "font-Fraunces font-semibold"
             }
           >
             Add Blog
@@ -62,7 +90,9 @@ export function Navbars() {
           <NavLink
             to="/AllBlog"
             className={({ isActive }) =>
-              isActive ? "text-blue-600 font-Fraunces font-semibold" : "font-Fraunces font-semibold"
+              isActive
+                ? "text-blue-600 font-Fraunces font-semibold"
+                : "font-Fraunces font-semibold"
             }
           >
             All Blogs
@@ -72,7 +102,9 @@ export function Navbars() {
           <NavLink
             to="/FBlogs"
             className={({ isActive }) =>
-              isActive ? "text-blue-600 font-Fraunces font-semibold" : "font-Fraunces font-semibold"
+              isActive
+                ? "text-blue-600 font-Fraunces font-semibold"
+                : "font-Fraunces font-semibold"
             }
           >
             Featured Blogs
@@ -82,7 +114,9 @@ export function Navbars() {
           <NavLink
             to="/wishList"
             className={({ isActive }) =>
-              isActive ? "text-blue-600 font-Fraunces font-semibold" : "font-Fraunces font-semibold"
+              isActive
+                ? "text-blue-600 font-Fraunces font-semibold"
+                : "font-Fraunces font-semibold"
             }
           >
             WishList
