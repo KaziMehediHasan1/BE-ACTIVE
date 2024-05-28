@@ -10,6 +10,7 @@ import Banner from "../Home/Banner";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import PrivateRoutes from "./PrivateRoutes";
+import RecentBlog from "../Home/RecentBlog";
 
 const router = createBrowserRouter([
     {

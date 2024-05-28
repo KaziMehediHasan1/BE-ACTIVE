@@ -11,11 +11,11 @@ const Register = () => {
   const { createUser, updateUserProfile,googleSingIn } = useContext(AuthContext);
   const [registeredError, setRegisteredError] = useState("");
   const [registeredSuccess, setRegisteredSuccess] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
-  console.log("peyechi", createUser);
+  // console.log("peyechi", createUser);
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
