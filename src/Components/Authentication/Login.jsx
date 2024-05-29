@@ -11,15 +11,15 @@ export const Login = () => {
   const { loginUser, googleSingIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
-  console.log(navigate);
+  // console.log(location);
+  // console.log(navigate);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     const user = { email, password };
-    console.log(user);
+    // console.log(user);
     loginUser(email, password)
       .then((result) => {
         console.log(result);

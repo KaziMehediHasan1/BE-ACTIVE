@@ -38,7 +38,7 @@ const Register = () => {
       return;
     }
 
-    console.log(user);
+    // console.log(user);
 
     // Create User Section..
     createUser(email, password)

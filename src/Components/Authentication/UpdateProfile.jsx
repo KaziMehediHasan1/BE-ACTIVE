@@ -7,14 +7,14 @@ import { Toast } from 'flowbite-react';
 const UpdateProfile = () => {
     const {updateUserProfile,user} = useContext(AuthContext)
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
 	const navigate = useNavigate();
     const handleSubmit = e =>{
         e.preventDefault();
         const from = new FormData(e.currentTarget)
         const name = from.get('name');
         const photoURL = from.get('url');
-        console.log(name,photoURL);
+        // console.log(name,photoURL);
         updateUserProfile(name, photoURL)
         .then(result => {
             console.log(result.user);

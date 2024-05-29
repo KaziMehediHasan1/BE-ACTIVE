@@ -5,7 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 export function Navbars() {
   const { user, Logout } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const handlLogout = (e) => {
     Logout()
       .then((result) => {
@@ -30,12 +30,12 @@ export function Navbars() {
       </Navbar.Brand>
 
       <div className="flex md:order-2">
-        <Dropdown
+        <Dropdown 
           arrowIcon={false}
           inline
           label={<Avatar alt="User settings" img={user?.photoURL} rounded />}
         >
-          <Dropdown.Header>
+          <Dropdown.Header className="sm:z-30">
             <span className="block text-sm font-Fraunces">
               {user?.displayName}
             </span>
