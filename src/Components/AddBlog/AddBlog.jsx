@@ -15,7 +15,7 @@ const AddBlog = () => {
   return (
     <div className="mt-20 mb-10">
       <section className="p-6 bg-gray-100 text-gray-900">
-        <form
+        <form  onSubmit={handleSubmit}
           noValidate=""
           action=""
           className="container font-Fraunces flex flex-col mx-auto space-y-12"
@@ -24,7 +24,7 @@ const AddBlog = () => {
             <div className="space-y-2 mt-4 col-span-full lg:col-span-1">
               <img src={write} alt="" />
             </div>
-
+            
             {/* Input Field */}
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
               <div className="col-span-full w-full sm:col-span-4">
@@ -94,7 +94,7 @@ const AddBlog = () => {
               </div>
               <br />
               <div className="col-span-full w container space-x-4 sm:col-span-2">
-                <button onSubmit={handleSubmit}
+                <button
                   type="submit"
                   className="my-4 w-full p-2 px-6 font-semibold rounded bg-blue-500 hover:bg-blue-300 hover:text-black shadow-lg text-gray-100"
                 > Submit </button>     
