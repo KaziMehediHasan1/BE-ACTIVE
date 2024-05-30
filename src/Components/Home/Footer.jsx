@@ -111,8 +111,8 @@ const Footer = () => {
             </div>
           </div>
           <div className="px-4 py-6 font-Fraunces bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
-            <span className="text-xl text-gray-500 font-semibold font-Fraunces dark:text-gray-300 sm:text-center">
-              © 2024 <span className='text-blue-600 text-2xl'>Be</span> <span className="text-blue-400">Active</span> All Rights
+            <span className="text-xl font-Fraunces dark:text-gray-300 sm:text-center">
+              © 2024 <span className='text-blue-600 text-2xl'>Be</span> Active All Rights
               Reserved.
             </span>
             <div className="flex font-Fraunces mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">

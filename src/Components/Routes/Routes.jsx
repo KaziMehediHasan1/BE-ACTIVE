@@ -20,7 +20,8 @@ const router = createBrowserRouter([
       children:[
         {
           path: '/',
-          element: <Banner></Banner>
+          element: <Banner></Banner>,
+          loader:()=> fetch('http://localhost:5000/addBlog') 
         },
         {
           path: '/blog',
@@ -32,7 +33,8 @@ const router = createBrowserRouter([
         },
         {
           path: '/AllBlog',
-          element: <AllBlogs></AllBlogs>
+          element: <AllBlogs></AllBlogs>,
+          loader:()=> fetch('http://localhost:5000/addBlog') 
         },
         {
           path: '/FBlogs',
