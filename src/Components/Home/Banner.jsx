@@ -31,8 +31,7 @@ const Banner = () => {
           <span className="text-4xl text-blue-600">Recent</span> All Blogs
         </h1>
         <div className="font-Fraunces grid lg:grid-cols-3 md:grid-cols-2 gap-10 bg-gray-100 p-8 shadow-blue-100 mt-4">
-          {blogs.map((blog) => (
-            <div key={blog._id} className=" rounded-md p-4 shadow-lg">
+          {blogs.slice(0,6).map(blog => <div key={blog._id} className=" rounded-md p-4 shadow-lg">
               <div className="w-96 h-[530px] ml-4 mt-2 rounded-md shadow-lg shadow-black-100 bg-gray-50">
                 <img
                   src={blog.photoURL}
@@ -65,8 +64,7 @@ const Banner = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            </div> )}
         </div>
       </div>
       {/* Newsletter Section.. */}
