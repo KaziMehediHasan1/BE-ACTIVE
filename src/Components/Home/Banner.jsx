@@ -2,12 +2,20 @@ import { NavLink, useLoaderData } from "react-router-dom";
 import banner from "../../assets/banner.jpg";
 import newsletter from '../../assets/news.jpg'
 import 'animate.css';
-import BlogDetails from "../BlgoDetails/BlogDetails";
+import { useState } from "react";
+import { toast } from "react-toastify";
 const Banner = () => {
+  // const [submit, setSubmit]=useState(false);
   const blogs = useLoaderData();
-  // const handleDetailsBlogPage = blogs =>{
-
-  // }
+  
+  const handleSubscribe = e =>{
+    e.preventDefault();
+    const form = e.target.email.value;
+    if(form){
+      toast.success('Thank you for subscribing to our newsletter')
+      form.reset()
+    }
+  }
   return (
     <div className=" mb-14 mt-12">
       <img src={banner} className="lg:h-[850px] relative opacity-30 w-full" />
@@ -93,19 +101,21 @@ const Banner = () => {
             <p className="pt-2 pb-8 text-xl font-Fraunces antialiased text-center ">
               Find out about blogs and other news
             </p>
-            <div className="flex flex-row">
+            <form onSubmit={handleSubscribe}  className="flex flex-row">
               <input
-                type="text"
+                type="email"
+                name="email"
                 placeholder="Enter your mail"
+                required
                 className="w-3/5 p-3 rounded-l-lg font-Fraunces sm:w-2/3"
               />
               <button
-                type="button"
+                type="submit"
                 className="w-2/5 p-3 font-semibold font-Fraunces rounded-r-lg sm:w-1/3 bg-blue-500 text-gray-50"
               >
                 Subscribe
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>

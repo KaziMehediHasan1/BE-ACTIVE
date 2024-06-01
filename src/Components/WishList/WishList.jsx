@@ -7,14 +7,11 @@ const WishList = () => {
   const AllBlogs = blogs.find((blog) => blog._id == id);
   const { photoURL, shortDescription, title,_id, category } =
     AllBlogs;
-  console.log(AllBlogs);
+
+  
   return (
     <div>
       <div>
-        <h1 className="mt-8 animate__slideInLeft text-center font-semibold font-Fraunces text-xl">
-          {" "}
-          <span className="text-4xl text-blue-600">Recent</span> All Blogs
-        </h1>
         <div className="font-Fraunces grid lg:grid-cols-3 md:grid-cols-2 gap-10 bg-gray-100 rounded-md p-8 shadow-blue-100 mt-8">
           <div
             className="animate__slideInLeft rounded-md p-4 shadow-lg"
