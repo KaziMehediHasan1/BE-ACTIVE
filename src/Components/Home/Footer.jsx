@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-white dark:bg-gray-900 font-Fraunces">
+      <footer className="bg-blue-200 dark:bg-gray-900 mt-2 rounded font-Fraunces">
         <div>
           <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 font-Fraunces">
             <div>
               <h2 className="mb-6 font-Fraunces text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Company
               </h2>
-              <ul className="text-gray-500 font-Fraunces dark:text-gray-400 font-medium">
+              <ul className=" font-Fraunces dark:text-gray-400 font-medium">
                 <li className="mb-4">
                   <Link className="font-Fraunces hover:underline">
                     About
@@ -37,7 +37,7 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-Fraunces font-semibold text-gray-900 uppercase dark:text-white">
                 Help center
               </h2>
-              <ul className="text-gray-500 font-Fraunces dark:text-gray-400 font-medium">
+              <ul className="font-Fraunces dark:text-gray-400 font-medium">
                 <li className="mb-4">
                   <Link className="hover:underline font-Fraunces">
                     Discord Server
@@ -64,7 +64,7 @@ const Footer = () => {
               <h2 className="mb-6 font-Fraunces text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Legal
               </h2>
-              <ul className="text-gray-500 font-Fraunces dark:text-gray-400 font-medium">
+              <ul className=" font-Fraunces dark:text-gray-400 font-medium">
                 <li className="mb-4">
                   <Link className="hover:underline font-Fraunces">
                     Privacy Policy
@@ -86,7 +86,7 @@ const Footer = () => {
               <h2 className="mb-6 font-Fraunces text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Download
               </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <ul className=" dark:text-gray-400 font-medium">
                 <li className="mb-4">
                   <Link className="hover:underline font-Fraunces">
                     iOS
@@ -110,9 +110,9 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="px-4 py-6 font-Fraunces bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
+          <div className="px-4 py-6 font-Fraunces bg-blue-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
             <span className="text-xl font-Fraunces dark:text-gray-300 sm:text-center">
-              © 2024 <span className='text-blue-600 text-2xl'>Be</span> Active All Rights
+              © 2024 Be Active All Rights
               Reserved.
             </span>
             <div className="flex font-Fraunces mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">

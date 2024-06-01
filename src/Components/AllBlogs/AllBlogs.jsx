@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 
 const AllBlogs = () => {
   const blogs = useLoaderData();
@@ -28,9 +28,9 @@ const AllBlogs = () => {
               </div>
               {/* button */}
               <div className="flex space-x-3">
-                <button className="flex  items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-sky-600 text-gray-50">
+                <NavLink to={`/blogDetails/${blog._id}`} className="flex  items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-sky-600 text-gray-50">
                   Details
-                </button>
+                </NavLink>
                 <button className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-sky-600 text-gray-50">
                   Wishlist
                 </button>

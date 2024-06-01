@@ -1,6 +1,13 @@
 import { toast } from "react-toastify";
 import write from "../.././assets/write.jpg";
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 const AddBlog = () => {
+  const user = useContext(AuthContext);
+  const userName = user?.user.displayName;
+  const userEmail = user?.user.email;
+  const users = {userName, userEmail}
+  console.log(users);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,6 +22,7 @@ const AddBlog = () => {
       shortDescription,
       longDescription,
       photoURL,
+      users
     };
     console.log(blog);
     fetch("http://localhost:5000/addBlog", {
