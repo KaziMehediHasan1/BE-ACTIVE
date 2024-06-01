@@ -11,6 +11,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import FeaturedBlogs from "../FeturedBlogs/FeaturedBlogs";
 import WishList from "../WishList/WishList";
 import BlogDetails from "../BlgoDetails/BlogDetails";
+import UpdateBlogs from "../AddBlog/UpdateBlogs";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             <AddBlog></AddBlog>
           </PrivateRoutes>
         ),
+      },
+      {
+        path: '/updateBlogs',
+        element: <UpdateBlogs></UpdateBlogs>
       },
       {
         path: "/AllBlog",

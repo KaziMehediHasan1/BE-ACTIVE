@@ -86,6 +86,20 @@ export function Navbars() {
             Add Blog
           </NavLink>
         </Navbar.Link>
+        {
+          user? (<Navbar.Link>
+            <NavLink
+              to="/updateBlog"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-600 font-Fraunces font-semibold"
+                  : "font-Fraunces font-semibold"
+              }
+            >
+              Update Blog
+            </NavLink>
+          </Navbar.Link>) : '' 
+        }
         <Navbar.Link>
           <NavLink
             to="/AllBlog"

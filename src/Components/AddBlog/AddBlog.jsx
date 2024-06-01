@@ -4,10 +4,11 @@ import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 const AddBlog = () => {
   const user = useContext(AuthContext);
+  console.log(user.user.photoURL);
   const userName = user?.user.displayName;
-  const userEmail = user?.user.email;
-  const users = {userName, userEmail}
-  console.log(users);
+  const userPhoto = user?.user.photoURL;
+  const users = {userName, userPhoto}
+  // console.log(users);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
