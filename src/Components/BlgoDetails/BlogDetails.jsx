@@ -6,20 +6,21 @@ import { toast } from "react-toastify";
 
 const BlogDetails = () => {
   const blogs = useLoaderData();
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { photoURL, longDescription, shortDescription, title, _id } = blogs;
   const name = user?.displayName;
   const email = user?.email;
   const photo = user?.photoURL;
   const users = { name, email, photo, _id };
-  console.log(users);
+  // console.log(users);
   const handleAddComment = (e) => {
     e.preventDefault();
     const form = e.target.textArea.value;
     const data = {
-      user,
+      users,
       form,
     };
+    console.log(data);
     fetch(`${import.meta.env.VITE_API_URL}/wishList`, {
       method: "POST",
       headers: {
@@ -46,11 +47,16 @@ const BlogDetails = () => {
         <p className="mt-4 font-Fraunces">{longDescription}</p>
       </div>
       <div className="mt-6 flex justify-end mr-10">
-      {
-        user ? <Link to={`/updateBlog/${_id}`} className="bg-blue-400 p-2 px-8 text-white rounded-md">
-        <button>Blog Update</button>
-        </Link> : ""
-      }
+        {user ? (
+          <Link
+            to={`/updateBlog/${_id}`}
+            className="bg-blue-400 p-2 px-8 text-white rounded-md"
+          >
+            <button>Blog Update</button>
+          </Link>
+        ) : (
+          ""
+        )}
       </div>
       <hr className="mt-6 ml-10 mr-10 to-blue-600" />
       {/* Comment Section */}
@@ -72,6 +78,24 @@ const BlogDetails = () => {
         </form>
 
         {/* Show Comments.. */}
+        <div className="mt-6 rounded-lg w-5/12">
+          <div className="flex items-center gap-x-2">
+            <img
+              className="object-cover w-10 h-10 rounded-lg"
+              src=''
+            />
+
+            <div>
+              <h1 className="text-lg  font-semibold capitalize dark:text-white">
+                Mia John
+              </h1>
+
+              <p className="text-sm dark:text-gray-400">miajohn@merakiui.com</p>
+            </div>
+            
+          </div>
+          <p>dfad</p>
+        </div>
       </div>
     </div>
   );
