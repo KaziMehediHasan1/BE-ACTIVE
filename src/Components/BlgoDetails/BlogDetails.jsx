@@ -1,12 +1,13 @@
 import { Label, Textarea } from "flowbite-react";
-import { useContext } from "react";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
 
 const BlogDetails = () => {
   const blogs = useLoaderData();
   const { user } = useContext(AuthContext);
+  const [commentData, setCommentData] = useState();
   const { photoURL, longDescription, shortDescription, title, _id } = blogs;
   const name = user?.displayName;
   const email = user?.email;
@@ -20,7 +21,6 @@ const BlogDetails = () => {
       users,
       form,
     };
-    console.log(data);
     fetch(`${import.meta.env.VITE_API_URL}/wishList`, {
       method: "POST",
       headers: {
@@ -37,6 +37,16 @@ const BlogDetails = () => {
       });
     console.log(data);
   };
+  
+  useEffect(()=>{
+    getData();
+  },[commentData])
+  const getData = async()=>{
+    fetch(`${import.meta.env.VITE_API_URL}/comment`)
+    .then(res=>res.json())
+    .then(data=> setCommentData(data))
+  } 
+  console.log(commentData);
 
   return (
     <div className="container mt-10 md:p-8 p-6">
