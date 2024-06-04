@@ -46,9 +46,11 @@ const BlogDetails = () => {
         <p className="mt-4 font-Fraunces">{longDescription}</p>
       </div>
       <div className="mt-6 flex justify-end mr-10">
-      <Link to={`/updateBlog/${_id}`} className="bg-blue-400 p-2 px-8 text-white rounded-md">
+      {
+        user ? <Link to={`/updateBlog/${_id}`} className="bg-blue-400 p-2 px-8 text-white rounded-md">
         <button>Blog Update</button>
-        </Link>
+        </Link> : ""
+      }
       </div>
       <hr className="mt-6 ml-10 mr-10 to-blue-600" />
       {/* Comment Section */}

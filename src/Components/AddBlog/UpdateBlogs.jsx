@@ -30,7 +30,8 @@ const UpdateBlogs = () => {
       });
   };
   return (
-    <div className="mt-20 mb-10">
+    <div className="mt-10 mb-10">
+      <h1 className="text-center mb-5 bg-blue-400 p-4 text-3xl text-white font-Fraunces rounded-md">Update Your Blog</h1>
       <section className="p-6 bg-gray-100 text-gray-900">
         <form
           onSubmit={handleUpdate}
