@@ -7,7 +7,8 @@ const AddBlog = () => {
   console.log(user.user.photoURL);
   const userName = user?.user.displayName;
   const userPhoto = user?.user.photoURL;
-  const users = {userName, userPhoto}
+  const userMail = user?.user.email;
+  const users = {userName, userPhoto, userMail}
   // console.log(users);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +27,7 @@ const AddBlog = () => {
       users
     };
     console.log(blog);
-    fetch("http://localhost:5000/addBlog", {
+    fetch(`${import.meta.env.VITE_API_URL}/addBlog`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

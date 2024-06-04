@@ -23,10 +23,8 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photoURL = form.PhotoUrl.value;
-    const user = { name, email, password, photoURL };
 
     // Validate password
-
     if (password.length < 6) {
       toast.error("Password should be at least 6 characters long");
       return;
@@ -35,6 +33,9 @@ const Register = () => {
       return;
     } else if (!/[A-Z]/.test(password)) {
       toast.error("Password should include at least one uppercase letter");
+      return;
+    } else if(!/[_asdf234$%]/.test(password)){
+      toast.error('Password should include at least one special character');
       return;
     }
 

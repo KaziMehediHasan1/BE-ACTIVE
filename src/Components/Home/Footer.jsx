@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 font-Fraunces">
             <div>
               <h2 className="mb-6 font-Fraunces text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Company
+                Be Active
               </h2>
               <ul className=" font-Fraunces dark:text-gray-400 font-medium">
                 <li className="mb-4">

@@ -18,7 +18,6 @@ export const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    const user = { email, password };
     // console.log(user);
     loginUser(email, password)
       .then((result) => {
