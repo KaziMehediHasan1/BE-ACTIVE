@@ -15,7 +15,7 @@ const UpdateBlogs = () => {
       category
     };
     fetch(`${import.meta.env.VITE_API_URL}/addBlogs/${_id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
@@ -24,7 +24,7 @@ const UpdateBlogs = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           toast("Update Successful");
         }
       });
@@ -35,8 +35,6 @@ const UpdateBlogs = () => {
       <section className="p-6 bg-gray-100 text-gray-900">
         <form
           onSubmit={handleUpdate}
-          noValidate=""
-          action=""
           className="container font-Fraunces flex flex-col mx-auto space-y-12"
         >
           <fieldset className="grid grid-cols-4 gap-4 p-6 rounded-md shadow-sm bg-gray-50">

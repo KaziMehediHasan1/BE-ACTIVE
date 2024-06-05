@@ -1,13 +1,50 @@
 import { Label, Textarea } from "flowbite-react";
 import { useContext, useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const BlogDetails = () => {
-  const blogs = useLoaderData();
+  // const blogs = useLoaderData();
+  const { id } = useParams();
+  const {
+    data: blogs,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["blogDetails"],
+    queryFn: async () => {
+      console.log("i");
+      const { data } = await axios(
+        `${import.meta.env.VITE_API_URL}/addBlogs/${id}`
+      );
+      return data;
+    },
+  });
+  console.log(isLoading, error);
+
+  console.log(blogs);
   const { user } = useContext(AuthContext);
-  const [commentData, setCommentData] = useState();
+  // const [commentData, setCommentData] = useState();
+
+  // get comment data using tanStack query...
+  const { data, isPending } = useQuery({
+    queryKey: ["comment"],
+    queryFn: async () => {
+      const { data } = await axios(`${import.meta.env.VITE_API_URL}/comment`);
+      return data;
+    },
+  });
+  if (isPending) {
+    return <p>loading.....</p>;
+  }
+
+  // const {} = data;
+  if (isLoading) {
+    return <p>loading....</p>;
+  }
   const { photoURL, longDescription, shortDescription, title, _id } = blogs;
   const name = user?.displayName;
   const email = user?.email;
@@ -21,7 +58,7 @@ const BlogDetails = () => {
       users,
       form,
     };
-    fetch(`${import.meta.env.VITE_API_URL}/wishList`, {
+    fetch(`${import.meta.env.VITE_API_URL}/comment`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -37,17 +74,8 @@ const BlogDetails = () => {
       });
     console.log(data);
   };
-  
-  useEffect(()=>{
-    getData();
-  },[commentData])
-  const getData = async()=>{
-    fetch(`${import.meta.env.VITE_API_URL}/comment`)
-    .then(res=>res.json())
-    .then(data=> setCommentData(data))
-  } 
-  console.log(commentData);
 
+  // console.log(one);
   return (
     <div className="container mt-10 md:p-8 p-6">
       <div className="mx-auto text-center">
@@ -90,10 +118,7 @@ const BlogDetails = () => {
         {/* Show Comments.. */}
         <div className="mt-6 rounded-lg w-5/12">
           <div className="flex items-center gap-x-2">
-            <img
-              className="object-cover w-10 h-10 rounded-lg"
-              src=''
-            />
+            <img className="object-cover w-10 h-10 rounded-lg" src="" />
 
             <div>
               <h1 className="text-lg  font-semibold capitalize dark:text-white">
@@ -102,7 +127,6 @@ const BlogDetails = () => {
 
               <p className="text-sm dark:text-gray-400">miajohn@merakiui.com</p>
             </div>
-            
           </div>
           <p>dfad</p>
         </div>
