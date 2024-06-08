@@ -3,22 +3,21 @@ import update from "../../assets/update.jpg";
 import { toast } from "react-toastify";
 const UpdateBlogs = () => {
   const blogs = useLoaderData();
- 
-  const handleUpdate = e => {
+  const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
-    const formTitle = form.title.value;
-    const formCategory = form.category.value;
-    const formShortDescription = form.shortDescription.value;
-    const formLongDescription = form.LongDescription.value;
-    const formPhotoURL = form.photoURL.value;
-    console.log(formCategory);
+    const title = form.title.value;
+    const category = form.category.value;
+    const shortDescription = form.shortDescription.value;
+    const longDescription = form.LongDescription.value;
+    const photoURL = form.photoURL.value;
+    // console.log(formCategory);
     const UpdatedData = {
-      formTitle,
-      formCategory,
-      formShortDescription,
-      formLongDescription,
-      formPhotoURL
+      title,
+      category,
+      shortDescription,
+      longDescription,
+      photoURL,
     };
     fetch(`${import.meta.env.VITE_API_URL}/addBlogs/${_id}`, {
       method: "PATCH",
@@ -36,10 +35,12 @@ const UpdateBlogs = () => {
       });
   };
   const { photoURL, longDescription, shortDescription, _id, category, title } =
-  blogs;
+    blogs;
   return (
     <div className="mt-10 mb-10">
-      <h1 className="text-center mb-5 bg-blue-400 p-4 text-3xl text-white font-Fraunces rounded-md">Update Your Blog</h1>
+      <h1 className="text-center mb-5 bg-blue-400 p-4 text-3xl text-white font-Fraunces rounded-md">
+        Update Your Blog
+      </h1>
       <section className="p-6 bg-gray-100 text-gray-900">
         <form
           onSubmit={handleUpdate}

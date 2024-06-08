@@ -6,7 +6,6 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { toast } from "react-toastify";
 import { Label, Textarea } from "flowbite-react";
 
-
 const BlogDetails = () => {
   const blogs = useLoaderData();
   const { user } = useContext(AuthContext);
@@ -71,12 +70,12 @@ const BlogDetails = () => {
       <div className="mx-auto text-center">
         <h1 className="text-4xl font-semibold font-Fraunces">{title}</h1>
         <img className="mx-auto mt-4 lg:w-[1080px]" src={photoURL} alt="" />
-        <p className="mt-4 text-xl">{shortDescription}</p>
+        <p className="mt-4 text-2xl font-semibold">{shortDescription}</p>
         <p className="mt-4 font-Fraunces">{longDescription}</p>
       </div>
 
       {/* update blog button */}
-      {/* <div className="mt-6 flex justify-end mr-10">
+      <div className="mt-6 flex justify-end mr-10">
         {user?.email === blogs.users.userMail ? (
           <Link
             to={`/updateBlog/${detailsId}`}
@@ -87,7 +86,7 @@ const BlogDetails = () => {
         ) : (
           ""
         )}
-      </div> */}
+      </div>
 
       <hr className="mt-6 ml-10 mr-10 to-blue-600" />
 

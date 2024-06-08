@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { NavLink, useLoaderData, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import { Reorder } from "framer-motion"
+import { motion } from "framer-motion";
 
 const HomePageCard = () => {
   const blogs = useLoaderData();
@@ -37,24 +37,28 @@ const HomePageCard = () => {
           }
         });
       navigate("/wishList");
-    } if(!user){
-      navigate('/login')
+    }
+    if (!user) {
+      navigate("/login");
     }
   };
   return (
     <div className="mt-8">
       <h1 className="font-bold text-center text-2xl">
-        <span className="text-blue-700 text-4xl font-Robot font-bold">Recent</span>{" "}
+        <span className="text-blue-700 text-4xl font-Robot font-bold">
+          Recent
+        </span>{" "}
         Blogs
       </h1>
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-8 md:grid-cols-2 bg-gray-100 mt-8 rounded-md p-4">
-        {blogs.slice(0,6).map((blog)=>(
+        {blogs.slice(0, 6).map((blog) => (
           <div
             key={blog._id}
-            className="animate__slideInLeft  rounded-md p-4 shadow-lg"
+            data-aos="fade-right"
+            className="  rounded-md p-4 shadow-lg"
           >
             <div className="w-96 h-[530px] ml-4 mt-2 rounded-md shadow-lg shadow-black-100 bg-gray-50">
-              <img
+              <motion.img initial={{opacity: 0, y:100}} animate={{opacity: 2, y:0}} transition={{delay:1, duration:1}}
                 src={blog.photoURL}
                 alt=""
                 className="object-cover object-center w-full p-2 rounded-t-md h-72"

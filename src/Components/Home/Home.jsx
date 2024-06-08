@@ -1,5 +1,4 @@
 import travel from "../../assets/travel.jpg";
-import { motion, useScroll } from "framer-motion";
 import newsletter from "../../assets/news.jpg";
 import "animate.css";
 import { toast } from "react-toastify";
@@ -9,7 +8,7 @@ import edu from "../../assets/edu.jpg";
 import health from "../../assets/health.jpg";
 import tech from "../../assets/tech.jpg";
 import { FaBookReader, FaPenAlt, FaRegUser } from "react-icons/fa";
-
+import { motion} from 'framer-motion';
 const Home = () => {
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -24,14 +23,14 @@ const Home = () => {
       <section>
         <div className="bg-blue-600">
           <div className="container flex flex-col items-center px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 text-gray-900">
-            <h1 className="text-5xl font-bold leading-none sm:text-6xl xl:max-w-3xl text-gray-50">
+            <motion.h1 initial={{opacity: 0, y:100}} animate={{opacity: 2, y:0}} transition={{delay:1 , duration:1}} className="text-5xl font-bold leading-none sm:text-6xl xl:max-w-3xl text-gray-50">
               Active learning boosts retention.
-            </h1>
-            <p className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl text-gray-50">
+            </motion.h1>
+            <motion.p initial={{opacity: 0, x:100}} animate={{opacity: 2, x:0}} transition={{delay:1 , duration:1}} className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl text-gray-50">
               Engage actively with content: read, write, discuss, and apply.
               Active participation enhances comprehension, retention, and
               critical thinking, making learning more effective and enjoyable.
-            </p>
+            </motion.p>
             <div className="flex flex-wrap justify-center">
               <button
                 type="button"
@@ -128,7 +127,7 @@ const Home = () => {
           <span className="text-blue-600 font-semibold text-5xl">See</span> Your
           Favorite Content
         </h1>
-        <div className=" bg-gray-50 container rounded-md mt-8 p-6">
+        <motion.div initial={{opacity: 0, x:100}} animate={{opacity: 2, x:0}} transition={{delay:0.50}} className=" bg-gray-50 container rounded-md mt-8 p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             <NavLink className="mx-auto">
               <div className="card w-80 h-80 shadow-xl">
@@ -180,7 +179,7 @@ const Home = () => {
               </div>
             </NavLink>
           </div>
-        </div>
+        </motion.div>
       </div>
       {/* Newsletter Section.. */}
       <h1 className="mt-8 font-semibold text-center  font-Robot text-2xl">
