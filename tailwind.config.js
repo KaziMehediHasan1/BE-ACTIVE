@@ -11,6 +11,7 @@ export default {
     extend: {
       fontFamily:{
         Fraunces: "'Fraunces', serif",
+        Robot: "'Roboto Condensed', sans-serif"
       }
     },
   },

@@ -1,5 +1,5 @@
 import travel from "../../assets/travel.jpg";
-import banner from "../../assets/banner.mp4";
+import { motion, useScroll } from "framer-motion";
 import newsletter from "../../assets/news.jpg";
 import "animate.css";
 import { toast } from "react-toastify";
@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 import edu from "../../assets/edu.jpg";
 import health from "../../assets/health.jpg";
 import tech from "../../assets/tech.jpg";
+import { FaBookReader, FaPenAlt, FaRegUser } from "react-icons/fa";
 
 const Home = () => {
   const handleSubscribe = (e) => {
@@ -19,16 +20,17 @@ const Home = () => {
     }
   };
   return (
-    <div className="mb-14 mt-12">
+    <div className=" mb-14 mt-12">
       <section>
         <div className="bg-blue-600">
           <div className="container flex flex-col items-center px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 text-gray-900">
             <h1 className="text-5xl font-bold leading-none sm:text-6xl xl:max-w-3xl text-gray-50">
-              Provident blanditiis cum exercitationem
+              Active learning boosts retention.
             </h1>
             <p className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl text-gray-50">
-              Cupiditate minima voluptate temporibus quia? Architecto beatae
-              esse ab amet vero eaque explicabo!
+              Engage actively with content: read, write, discuss, and apply.
+              Active participation enhances comprehension, retention, and
+              critical thinking, making learning more effective and enjoyable.
             </p>
             <div className="flex flex-wrap justify-center">
               <button
@@ -121,9 +123,9 @@ const Home = () => {
 
       {/* Select Your Favorite one.. */}
       <div>
-        <h1 className="text-center font-Fraunces text-3xl mt-6">
+        <h1 className="text-center font-Robot text-2xl font-semibold mt-6">
           {" "}
-          <span className="text-blue-600 font-semibold text-6xl">See</span> Your
+          <span className="text-blue-600 font-semibold text-5xl">See</span> Your
           Favorite Content
         </h1>
         <div className=" bg-gray-50 container rounded-md mt-8 p-6">
@@ -147,7 +149,7 @@ const Home = () => {
                   <img src={edu} />
                 </figure>
                 <div className="card-body flex justify-center items-center">
-                  <h2 className="card-title text-purple-600 text-2xl">
+                  <h2 className="card-title text-orange-400 text-2xl">
                     Education
                   </h2>
                 </div>
@@ -160,7 +162,7 @@ const Home = () => {
                   <img src={health} />
                 </figure>
                 <div className="card-body flex justify-center items-center">
-                  <h2 className="card-title text-purple-600 text-2xl">
+                  <h2 className="card-title text-orange-400 text-2xl">
                     Health
                   </h2>
                 </div>
@@ -181,7 +183,7 @@ const Home = () => {
         </div>
       </div>
       {/* Newsletter Section.. */}
-      <h1 className="mt-8 font-semibold text-center  font-Fraunces text-xl">
+      <h1 className="mt-8 font-semibold text-center  font-Robot text-2xl">
         {" "}
         <span className="text-4xl text-blue-600">N</span>ewsletter
       </h1>
@@ -216,6 +218,58 @@ const Home = () => {
             </form>
           </div>
         </div>
+      </div>
+
+      {/* Followers.. */}
+      <div className="mt-10">
+        <h1 className="text-blue-700 font-Robot font-semibold text-4xl text-center">Our Activity</h1>
+        <section className="p-6 my-6 bg-gray-100 text-gray-800">
+          <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">
+            <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800">
+              <div className="flex justify-center items-center p-2 align-middle rounded-lg sm:p-4 bg-violet-600">
+                <FaPenAlt className="text-white text-3xl"></FaPenAlt>
+              </div>
+              <div className="flex flex-col justify-center align-middle">
+                <p className="text-3xl font-semibold leading-none">200+</p>
+                <p className="capitalize">writer</p>
+              </div>
+            </div>
+            <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800">
+              <div className="flex justify-center items-center p-2 align-middle rounded-lg sm:p-4 bg-violet-600">
+                <FaRegUser className="text-white text-3xl"></FaRegUser>
+              </div>
+              <div className="flex flex-col justify-center align-middle">
+                <p className="text-3xl font-semibold leading-none">7500</p>
+                <p className="capitalize">Subscribers</p>
+              </div>
+            </div>
+            <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800">
+              <div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-violet-600">
+                <FaBookReader className="text-white text-3xl"></FaBookReader>
+              </div>
+              <div className="flex flex-col justify-center align-middle">
+                <p className="text-3xl font-semibold leading-none">500 Blog</p>
+                <p className="capitalize">EveryDay Read</p>
+              </div>
+            </div>
+            <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800">
+              <div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 bg-violet-600">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  fill="currentColor"
+                  className="h-9 w-9 text-gray-100"
+                >
+                  <path d="M454.423,278.957,328,243.839v-8.185a116,116,0,1,0-104,0V312H199.582l-18.494-22.6a90.414,90.414,0,0,0-126.43-13.367,20.862,20.862,0,0,0-8.026,33.47L215.084,496H472V302.08A24.067,24.067,0,0,0,454.423,278.957ZM192,132a84,84,0,1,1,136,65.9V132a52,52,0,0,0-104,0v65.9A83.866,83.866,0,0,1,192,132ZM440,464H229.3L79.141,297.75a58.438,58.438,0,0,1,77.181,11.91l28.1,34.34H256V132a20,20,0,0,1,40,0V268.161l144,40Z"></path>
+                </svg>
+              </div>
+              <div className="flex flex-col justify-center align-middle">
+                <p className="text-3xl font-semibold leading-none">74%</p>
+                <p className="capitalize">Site Visitor</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

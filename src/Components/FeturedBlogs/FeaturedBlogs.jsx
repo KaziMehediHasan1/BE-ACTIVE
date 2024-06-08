@@ -4,6 +4,7 @@ const FeaturedBlogs = () => {
   const allBlogs = useLoaderData();
   const blogs = allBlogs.filter((blog) => blog.longDescription.length);
   const bigger = blogs.sort((a, b) => b - a).slice(0, 10);
+  console.log(allBlogs);
 
   return (
     <div className="mt-10">
@@ -26,10 +27,10 @@ const FeaturedBlogs = () => {
                   <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                     {index + 1}
                   </Table.Cell>
-                  <Table.Cell className="">{blog.title}</Table.Cell>
-                  <Table.Cell>{blog.users.userName}</Table.Cell>
+                  <Table.Cell className="">{blog?.title}</Table.Cell>
+                  <Table.Cell>{blog?.users?.userName}</Table.Cell>
                   <Table.Cell>
-                    <Avatar img={blog.users.userPhoto} />
+                    <Avatar img={blog?.users?.userPhoto} />
                   </Table.Cell>
                 </Table.Row>)}
               </Table.Body>

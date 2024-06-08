@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink, useLoaderData, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { Reorder } from "framer-motion"
 
 const HomePageCard = () => {
   const blogs = useLoaderData();
@@ -42,8 +43,8 @@ const HomePageCard = () => {
   };
   return (
     <div className="mt-8">
-      <h1 className="font-semibold text-center text-2xl">
-        <span className="text-blue-700 text-4xl font-Fraunces">Recent</span>{" "}
+      <h1 className="font-bold text-center text-2xl">
+        <span className="text-blue-700 text-4xl font-Robot font-bold">Recent</span>{" "}
         Blogs
       </h1>
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-8 md:grid-cols-2 bg-gray-100 mt-8 rounded-md p-4">

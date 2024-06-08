@@ -23,7 +23,7 @@ export function Navbars() {
       <Navbar.Brand>
         <NavLink
           to="/"
-          className="self-center whitespace-nowrap font-Fraunces text-2xl font-semibold dark:text-white"
+          className="e self-center whitespace-nowrap font-Fraunces text-2xl font-semibold dark:text-white"
         >
           <span className="text-blue-500 text-3xl">Be</span> Active
         </NavLink>
@@ -67,8 +67,8 @@ export function Navbars() {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "text-blue-600 font-Fraunces font-semibold"
-                : "font-Fraunces font-semibold"
+                ? "text-blue-600 hover:underline font-Fraunces font-semibold"
+                : "font-Fraunces hover:underline font-semibold"
             }
           >
             Home
@@ -79,8 +79,8 @@ export function Navbars() {
             to="/addBlog"
             className={({ isActive }) =>
               isActive
-                ? "text-blue-600 font-Fraunces font-semibold"
-                : "font-Fraunces font-semibold"
+                ? "text-blue-600 hover:underline font-Fraunces font-semibold"
+                : "font-Fraunces hover:underline font-semibold"
             }
           >
             Add Blog
@@ -92,8 +92,8 @@ export function Navbars() {
             to="/AllBlog"
             className={({ isActive }) =>
               isActive
-                ? "text-blue-600 font-Fraunces font-semibold"
-                : "font-Fraunces font-semibold"
+                ? "text-blue-600 hover:underline font-Fraunces font-semibold"
+                : "font-Fraunces hover:underline font-semibold"
             }
           >
             All Blogs
@@ -104,8 +104,8 @@ export function Navbars() {
             to="/FBlogs"
             className={({ isActive }) =>
               isActive
-                ? "text-blue-600 font-Fraunces font-semibold"
-                : "font-Fraunces font-semibold"
+                ? "text-blue-600 hover:underline font-Fraunces font-semibold"
+                : "font-Fraunces hover:underline font-semibold"
             }
           >
             Featured Blogs
@@ -116,8 +116,8 @@ export function Navbars() {
             to="/wishList"
             className={({ isActive }) =>
               isActive
-                ? "text-blue-600 font-Fraunces font-semibold"
-                : "font-Fraunces font-semibold"
+                ? "text-blue-600 hover:underline font-Fraunces font-semibold"
+                : "font-Fraunces hover:underline font-semibold"
             }
           >
             WishList

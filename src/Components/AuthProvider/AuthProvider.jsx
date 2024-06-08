@@ -5,10 +5,11 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
-  GoogleAuthProvider
+  GoogleAuthProvider,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/Firebase";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
@@ -41,8 +42,25 @@ const AuthProvider = ({ children }) => {
   // Observer get user data..
   useEffect(() => {
     const Unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user.email;
+      const loggedUser = { email: userEmail };
       setUser(currentUser);
       console.log("observing current user", currentUser);
+      // if user exists then issue a token...
+      if (currentUser) {
+        axios
+          .post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log("token response", res.data);
+          });
+      } else {
+        axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, {
+          withCredentials: true,
+        })
+        .then(res=>console.log(res.data))
+      }
     });
     return () => {
       Unsubscribe();
@@ -63,7 +81,6 @@ const AuthProvider = ({ children }) => {
     Logout,
     updateUserProfile,
     googleSingIn,
-
   };
 
   return (

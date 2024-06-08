@@ -1,19 +1,23 @@
+import { useContext } from "react";
 import { NavLink, useLoaderData, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const AllBlogs = () => {
   const blogs = useLoaderData();
+  const {user} = useContext(AuthContext)
   const navigate = useNavigate();
   console.log(blogs);
   const handleAddWishList = (id) => {
     const blog = blogs.find((item) => item._id == id);
-    const { title, longDescription, photoURL, shortDescription, users } = blog;
+    const { title, longDescription, photoURL, shortDescription } = blog;
     const AllData = {
+      email: user?.email,
       title,
       longDescription,
       photoURL,
       shortDescription,
-      users,
+      
     };
     console.log(AllData);
     fetch(`${import.meta.env.VITE_API_URL}/wishList`, {

@@ -3,16 +3,22 @@ import update from "../../assets/update.jpg";
 import { toast } from "react-toastify";
 const UpdateBlogs = () => {
   const blogs = useLoaderData();
-  const { photoURL, longDescription, shortDescription, _id, category, title } =
-    blogs;
+ 
   const handleUpdate = e => {
     e.preventDefault();
+    const form = e.target;
+    const formTitle = form.title.value;
+    const formCategory = form.category.value;
+    const formShortDescription = form.shortDescription.value;
+    const formLongDescription = form.LongDescription.value;
+    const formPhotoURL = form.photoURL.value;
+    console.log(formCategory);
     const UpdatedData = {
-      title,
-      longDescription,
-      photoURL,
-      shortDescription,
-      category
+      formTitle,
+      formCategory,
+      formShortDescription,
+      formLongDescription,
+      formPhotoURL
     };
     fetch(`${import.meta.env.VITE_API_URL}/addBlogs/${_id}`, {
       method: "PATCH",
@@ -29,6 +35,8 @@ const UpdateBlogs = () => {
         }
       });
   };
+  const { photoURL, longDescription, shortDescription, _id, category, title } =
+  blogs;
   return (
     <div className="mt-10 mb-10">
       <h1 className="text-center mb-5 bg-blue-400 p-4 text-3xl text-white font-Fraunces rounded-md">Update Your Blog</h1>
@@ -96,7 +104,7 @@ const UpdateBlogs = () => {
                   type="text"
                   defaultValue={shortDescription}
                   required
-                  name="sDescription"
+                  name="shortDescription"
                   placeholder="Enter a short Description"
                   className="w-full rounded-md hover:bg-blue-100  focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-sky-600 border-gray-300"
                 />
@@ -110,7 +118,7 @@ const UpdateBlogs = () => {
                   id="longDescription"
                   type="text"
                   required
-                  name="lg-Description"
+                  name="LongDescription"
                   placeholder="Enter a Long Description"
                   className="w-full hover:bg-blue-100  rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-sky-600 border-gray-300"
                 />

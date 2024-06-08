@@ -1,56 +1,38 @@
-import { Label, Textarea } from "flowbite-react";
 import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+// import axios from "axios";
+// import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { Label, Textarea } from "flowbite-react";
+
 
 const BlogDetails = () => {
-  // const blogs = useLoaderData();
-  const { id } = useParams();
-  const {
-    data: blogs,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["blogDetails"],
-    queryFn: async () => {
-      console.log("i");
-      const { data } = await axios(
-        `${import.meta.env.VITE_API_URL}/addBlogs/${id}`
-      );
-      return data;
-    },
-  });
-  console.log(isLoading, error);
-
-  console.log(blogs);
+  const blogs = useLoaderData();
   const { user } = useContext(AuthContext);
-  // const [commentData, setCommentData] = useState();
+  const [data, setData] = useState([]);
+  const { id } = useParams();
+  // const { data: blogs } = useQuery({
+  //   queryKey: ["blogDetails"],
+  //   queryFn: async () => {
+  //     const { data } = await axios(
+  //       `${import.meta.env.VITE_API_URL}/addBlogs/${id}`
+  //     );
+  //     return data;
+  //   },
+  // });
 
-  // get comment data using tanStack query...
-  const { data, isPending } = useQuery({
-    queryKey: ["comment"],
-    queryFn: async () => {
-      const { data } = await axios(`${import.meta.env.VITE_API_URL}/comment`);
-      return data;
-    },
-  });
-  if (isPending) {
-    return <p>loading.....</p>;
-  }
-
-  // const {} = data;
-  if (isLoading) {
-    return <p>loading....</p>;
-  }
-  const { photoURL, longDescription, shortDescription, title, _id } = blogs;
+  const {
+    photoURL,
+    longDescription,
+    shortDescription,
+    title,
+    _id: detailsId,
+  } = blogs;
   const name = user?.displayName;
   const email = user?.email;
   const photo = user?.photoURL;
-  const users = { name, email, photo, _id };
-  // console.log(users);
+  const users = { name, email, photo, detailsId };
   const handleAddComment = (e) => {
     e.preventDefault();
     const form = e.target.textArea.value;
@@ -72,10 +54,18 @@ const BlogDetails = () => {
           toast("Comment Successfully Added");
         }
       });
-    console.log(data);
   };
 
-  // console.log(one);
+  // comment..
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/comment`)
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
+  const AllComment = data.filter((comment) => comment.users?.detailsId === id);
+  // const commentUser = AllComment.map(comment=> comment)
+  console.log(AllComment);
+
   return (
     <div className="container mt-10 md:p-8 p-6">
       <div className="mx-auto text-center">
@@ -84,10 +74,12 @@ const BlogDetails = () => {
         <p className="mt-4 text-xl">{shortDescription}</p>
         <p className="mt-4 font-Fraunces">{longDescription}</p>
       </div>
-      <div className="mt-6 flex justify-end mr-10">
-        {user ? (
+
+      {/* update blog button */}
+      {/* <div className="mt-6 flex justify-end mr-10">
+        {user?.email === blogs.users.userMail ? (
           <Link
-            to={`/updateBlog/${_id}`}
+            to={`/updateBlog/${detailsId}`}
             className="bg-blue-400 p-2 px-8 text-white rounded-md"
           >
             <button>Blog Update</button>
@@ -95,10 +87,11 @@ const BlogDetails = () => {
         ) : (
           ""
         )}
-      </div>
+      </div> */}
+
       <hr className="mt-6 ml-10 mr-10 to-blue-600" />
-      {/* Comment Section */}
-      <div className="mt-10 ml-10">
+
+      <div className="mt-10  ml-10">
         <form onSubmit={handleAddComment} className="max-w-md">
           <div className="mb-2 block">
             <Label htmlFor="comment" value="Your comment" />
@@ -115,20 +108,25 @@ const BlogDetails = () => {
           </button>
         </form>
 
-        {/* Show Comments.. */}
-        <div className="mt-6 rounded-lg w-5/12">
-          <div className="flex items-center gap-x-2">
-            <img className="object-cover w-10 h-10 rounded-lg" src="" />
+        <div className="mt-6 space-y-5 rounded-lg bg-red-100 p-4 w-[32%]">
+          {AllComment.map((comment) => (
+            <div key={comment._id} className="flex items-center gap-x-2">
+              <img
+                className="object-cover w-10 h-10 rounded-lg"
+                src={comment.users.photo}
+              />
 
-            <div>
-              <h1 className="text-lg  font-semibold capitalize dark:text-white">
-                Mia John
-              </h1>
-
-              <p className="text-sm dark:text-gray-400">miajohn@merakiui.com</p>
+              <div>
+                <h1 className="text-lg font-semibold capitalize dark:text-white">
+                  {comment?.users.name}
+                </h1>
+                <p className="text-sm dark:text-gray-400">
+                  {comment?.users.email}
+                </p>
+                <p className="text-blue-600">{comment?.form}</p>
+              </div>
             </div>
-          </div>
-          <p>dfad</p>
+          ))}
         </div>
       </div>
     </div>

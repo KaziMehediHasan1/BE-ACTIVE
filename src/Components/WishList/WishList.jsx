@@ -2,18 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import { data } from "autoprefixer";
-import { Avatar } from "flowbite-react";
+
 
 const WishList = () => {
-  const { user,loading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [wishList, setWishList] = useState([]);
-  // const data = wishList.map(b => b.users.userMail)
-  // const userEmail = user?.email;
-  // console.log(data);
-  // console.log(userEmail);
   console.log(wishList);
-  const url = `http://localhost:5000/wishList?userMail=${user?.email}`;
+  const url = `${import.meta.env.VITE_API_URL}/wishList?userMail=${user?.email}`;
   // console.log(url);
   useEffect(() => {
     if(user){
@@ -21,9 +16,9 @@ const WishList = () => {
       .then((res) => res.json())
       .then((data) => setWishList(data));
     }
-  }, [user]);
-  // const [AllBlog, setAllBlog] = useState(blogs);
-  // console.log(AllBlog);
+  }, [user,url]);
+  console.log(user);
+
   const handleDeleteItems = (id) => {
     fetch(`${import.meta.env.VITE_API_URL}/wishList/${id}`, {
       method: "DELETE",
@@ -45,7 +40,7 @@ const WishList = () => {
   return (
     <div className="bg-slate-300 shadow-md p-4 mt-10 mb-10">
       <div className=" grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-10">
-        {wishList.map((blog) => (
+        {wishList?.map((blog) => (
           <div
             key={blog._id}
             className="font-Fraunces bg-gray-100 rounded-md p-8 shadow-blue-100 mt-8"
