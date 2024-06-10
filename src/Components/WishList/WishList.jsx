@@ -9,7 +9,6 @@ const WishList = () => {
   const [wishList, setWishList] = useState([]);
   console.log(wishList);
   const url = `${import.meta.env.VITE_API_URL}/wishList?userMail=${user?.email}`;
-  // console.log(url);
   useEffect(() => {
     if(user){
       fetch(url)
@@ -43,10 +42,10 @@ const WishList = () => {
         {wishList?.map((blog) => (
           <div
             key={blog._id}
-            className="font-Fraunces bg-gray-100 rounded-md p-8 shadow-blue-100 mt-8"
+            className="font-Fraunces bg-gray-100 rounded-md p-4 shadow-blue-100 mt-8"
           >
-            <div className="animate__slideInLeft rounded-md p-4 shadow-lg">
-              <div className="w-96 h-[530px] ml-4 mt-2 rounded-md shadow-lg shadow-black-100 bg-gray-50">
+            <div className="rounded-md lg:p-4 ">
+              <div className="lg:w-96 lg:h-[530px] md:h-[540px] ml-4 mt-2 rounded-md shadow-lg shadow-black-100 bg-gray-50">
                 <img
                   src={blog.photoURL}
                   alt=""

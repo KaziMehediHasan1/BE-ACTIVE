@@ -8,7 +8,7 @@ import edu from "../../assets/edu.jpg";
 import health from "../../assets/health.jpg";
 import tech from "../../assets/tech.jpg";
 import { FaBookReader, FaPenAlt, FaRegUser } from "react-icons/fa";
-import { motion} from 'framer-motion';
+import { motion } from "framer-motion";
 const Home = () => {
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -23,10 +23,20 @@ const Home = () => {
       <section>
         <div className="bg-blue-600">
           <div className="container flex flex-col items-center px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 text-gray-900">
-            <motion.h1 initial={{opacity: 0, y:100}} animate={{opacity: 2, y:0}} transition={{delay:1 , duration:1}} className="text-5xl font-bold leading-none sm:text-6xl xl:max-w-3xl text-gray-50">
+            <motion.h1
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 2, y: 0 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="text-5xl font-bold leading-none sm:text-6xl xl:max-w-3xl text-gray-50"
+            >
               Active learning boosts retention.
             </motion.h1>
-            <motion.p initial={{opacity: 0, x:100}} animate={{opacity: 2, x:0}} transition={{delay:1 , duration:1}} className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl text-gray-50">
+            <motion.p
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 2, x: 0 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl text-gray-50"
+            >
               Engage actively with content: read, write, discuss, and apply.
               Active participation enhances comprehension, retention, and
               critical thinking, making learning more effective and enjoyable.
@@ -122,12 +132,15 @@ const Home = () => {
 
       {/* Select Your Favorite one.. */}
       <div>
-        <h1 className="text-center font-Robot text-2xl font-semibold mt-6">
-          {" "}
-          <span className="text-blue-600 font-semibold text-5xl">See</span> Your
-          Favorite Content
+        <h1 className="font-bold text-center lg:text-3xl text-orange-600 mt-10 sm:text-2xl uppercase font-Fraunces">
+          See Your Favorite Content
         </h1>
-        <motion.div initial={{opacity: 0, x:100}} animate={{opacity: 2, x:0}} transition={{delay:0.50}} className=" bg-gray-50 container rounded-md mt-8 p-6">
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 2, x: 0 }}
+          transition={{ delay: 0.5 }}
+          className=" bg-gray-50 container rounded-md mt-8 p-6"
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             <NavLink className="mx-auto">
               <div className="card w-80 h-80 shadow-xl">
@@ -182,9 +195,8 @@ const Home = () => {
         </motion.div>
       </div>
       {/* Newsletter Section.. */}
-      <h1 className="mt-8 font-semibold text-center  font-Robot text-2xl">
-        {" "}
-        <span className="text-4xl text-blue-600">N</span>ewsletter
+      <h1 className="font-bold text-center lg:text-2xl text-blue-700 sm:text-2xl uppercase font-Fraunces mt-10">
+        Newsletter
       </h1>
       <div className="bg-blue-50 rounded-md mt-5 shadow-lg p-5">
         <div
@@ -221,7 +233,9 @@ const Home = () => {
 
       {/* Followers.. */}
       <div className="mt-10">
-        <h1 className="text-blue-700 font-Robot font-semibold text-4xl text-center">Our Activity</h1>
+        <h1 className="text-blue-700 font-Robot font-semibold text-4xl text-center">
+          Our Activity
+        </h1>
         <section className="p-6 my-6 bg-gray-100 text-gray-800">
           <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">
             <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800">

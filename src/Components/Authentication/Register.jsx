@@ -8,16 +8,14 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import logo from '../../assets/logo.png';
 import login from '../../assets/register.jpg';
+import axios from "axios";
 const Register = () => {
   const { createUser, updateUserProfile, googleSingIn } =
     useContext(AuthContext);
   const [registeredError, setRegisteredError] = useState("");
-  const [registeredSuccess, setRegisteredSuccess] = useState("");
-  // const [showPassword, setShowPassword] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
-  // console.log("peyechi", createUser);
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -47,7 +45,16 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        setRegisteredSuccess(result.success);
+        // get access token..
+        axios
+          .post(
+            `${import.meta.env.VITE_API_URL}/jwt`,
+            {
+              email: result?.user?.email,
+            },
+            { withCredentials: true }
+          )
+          .then((res)=> console.log(res.data))
         navigate(location?.state ? location.state : "/");
         updateUserProfile(name, photoURL).then(() => {
           toast.success("Your Registration Successful");
@@ -65,6 +72,15 @@ const Register = () => {
     googleSingIn()
       .then((result) => {
         console.log(result.user);
+        axios
+          .post(
+            `${import.meta.env.VITE_API_URL}/jwt`,
+            {
+              email: result?.user?.email,
+            },
+            { withCredentials: true }
+          )
+          .then(res=> console.log(res.data))
         toast.success("Google Login Successfully");
         navigate(location?.state ? location.state : "/");
       })

@@ -60,7 +60,7 @@ const BlogDetails = () => {
     fetch(`${import.meta.env.VITE_API_URL}/comment`)
       .then((res) => res.json())
       .then((data) => setData(data));
-  }, []);
+  }, [data]);
   const AllComment = data.filter((comment) => comment.users?.detailsId === id);
   // const commentUser = AllComment.map(comment=> comment)
   console.log(AllComment);

@@ -2,8 +2,6 @@ import { toast } from "react-toastify";
 import write from "../.././assets/write.jpg";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-// import { QueryClient, useMutation } from "@tanstack/react-query";
-// import axios from "axios";
 const AddBlog = () => {
   const user = useContext(AuthContext);
   console.log(user.user.photoURL);
@@ -11,7 +9,6 @@ const AddBlog = () => {
   const userPhoto = user?.user.photoURL;
   const userMail = user?.user.email;
   const users = {userName, userPhoto, userMail}
-  // console.log(users);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -28,14 +25,6 @@ const AddBlog = () => {
       photoURL,
       users
     };
-    console.log(blog);
-    // const mutation = useMutation({
-    //   mutationFn: axios.post(`${import.meta.env.VITE_API_URL}/addBlog`),
-    //   onSuccess: () => {
-    //     // Invalidate and refetch
-    //     QueryClient.invalidateQueries({ queryKey: ['addBlogs'] })
-    //   },
-    // })
     fetch(`${import.meta.env.VITE_API_URL}/addBlog`, {
       method: "POST",
       headers: {

@@ -1,8 +1,11 @@
 import { useLoaderData } from "react-router-dom";
 import update from "../../assets/update.jpg";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 const UpdateBlogs = () => {
   const blogs = useLoaderData();
+  // const { loading } = useContext(AuthContext);
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -36,9 +39,10 @@ const UpdateBlogs = () => {
   };
   const { photoURL, longDescription, shortDescription, _id, category, title } =
     blogs;
+
   return (
     <div className="mt-10 mb-10">
-      <h1 className="text-center mb-5 bg-blue-400 p-4 text-3xl text-white font-Fraunces rounded-md">
+      <h1 className="text-center uppercase mb-5 bg-blue-200 text-black p-4 text-3xl text-white font-Fraunces rounded-md">
         Update Your Blog
       </h1>
       <section className="p-6 bg-gray-100 text-gray-900">

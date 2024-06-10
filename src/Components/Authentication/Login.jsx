@@ -22,11 +22,14 @@ export const Login = () => {
         console.log(loggedInUser);
 
         // get access token..
-        const user = { email };
         axios
-          .post(`${import.meta.env.VITE_API_URL}/jwt`, user, {
-            withCredentials: true,
-          })
+          .post(
+            `${import.meta.env.VITE_API_URL}/jwt`,
+            {
+              email: result?.user?.email,
+            },
+            { withCredentials: true }
+          )
           .then((res) => {
             console.log(res.data);
             toast.success("Login Successfully");
@@ -45,9 +48,13 @@ export const Login = () => {
       .then((result) => {
         // console.log(result.user);
         axios
-          .post(`${import.meta.env.VITE_API_URL}/jwt`, {
-            email: result?.user?.email,
-          },{withCredentials: true})
+          .post(
+            `${import.meta.env.VITE_API_URL}/jwt`,
+            {
+              email: result?.user?.email,
+            },
+            { withCredentials: true }
+          )
           .then((res) => {
             console.log(res.data);
             toast.success("Google Login Successfully");

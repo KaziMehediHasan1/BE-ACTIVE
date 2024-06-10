@@ -8,11 +8,11 @@ const FeaturedBlogs = () => {
 
   return (
     <div className="mt-10">
-      <h1 className="text-center font-Fraunces font-semibold text-2xl mb-8">
+      <h1 className="text-center uppercase font-Fraunces font-semibold text-2xl mb-8">
         Top <span className="text-blue-500">10</span> Blog
       </h1>
 
-      <div className="mt-10 font-Fraunces bg-blue-50 p-4 rounded-sm">
+      <div className="mt-10 font-Fraunces bg-blue-50 border border-blue-500 rounded-lg p-4">
          <div className="overflow-x-auto w-[1500px]">
             <Table striped>
               <Table.Head>

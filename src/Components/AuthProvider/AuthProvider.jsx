@@ -25,6 +25,10 @@ const AuthProvider = ({ children }) => {
   // logout..
   const Logout = () => {
     setLoading(true);
+    const { data } = axios(`${import.meta.env.VITE_API_URL}/logout`, {
+      withCredentials: true,
+    });
+    console.log(data);
     signOut(auth);
   };
   // Login User...
@@ -42,9 +46,9 @@ const AuthProvider = ({ children }) => {
   // Observer get user data..
   useEffect(() => {
     const Unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      const userEmail = currentUser?.email || user.email;
+      const userEmail = currentUser?.email || user?.email;
       const loggedUser = { email: userEmail };
-      setUser(currentUser);
+
       console.log("observing current user", currentUser);
       // if user exists then issue a token...
       if (currentUser) {
@@ -54,12 +58,19 @@ const AuthProvider = ({ children }) => {
           })
           .then((res) => {
             console.log("token response", res.data);
+            setUser(currentUser);
+            setLoading(false);
           });
       } else {
-        axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, {
-          withCredentials: true,
-        })
-        .then(res=>console.log(res.data))
+        axios
+          .post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+            setUser(null);
+            setLoading(false);
+          });
       }
     });
     return () => {
@@ -81,6 +92,7 @@ const AuthProvider = ({ children }) => {
     Logout,
     updateUserProfile,
     googleSingIn,
+    loading,
   };
 
   return (

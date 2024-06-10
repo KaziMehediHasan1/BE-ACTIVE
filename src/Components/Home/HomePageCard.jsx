@@ -44,12 +44,7 @@ const HomePageCard = () => {
   };
   return (
     <div className="mt-8">
-      <h1 className="font-bold text-center text-2xl">
-        <span className="text-blue-700 text-4xl font-Robot font-bold">
-          Recent
-        </span>{" "}
-        Blogs
-      </h1>
+      <h1 className="font-bold text-center lg:text-4xl sm:text-2xl uppercase font-Fraunces">Recent Blogs</h1>
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-8 md:grid-cols-2 bg-gray-100 mt-8 rounded-md p-4">
         {blogs.slice(0, 6).map((blog) => (
           <div
@@ -58,7 +53,10 @@ const HomePageCard = () => {
             className="  rounded-md p-4 shadow-lg"
           >
             <div className="w-96 h-[530px] ml-4 mt-2 rounded-md shadow-lg shadow-black-100 bg-gray-50">
-              <motion.img initial={{opacity: 0, y:100}} animate={{opacity: 2, y:0}} transition={{delay:1, duration:1}}
+              <motion.img
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 2, y: 0 }}
+                transition={{ delay: 1, duration: 1 }}
                 src={blog.photoURL}
                 alt=""
                 className="object-cover object-center w-full p-2 rounded-t-md h-72"
