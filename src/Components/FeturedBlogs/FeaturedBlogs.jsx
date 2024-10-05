@@ -52,23 +52,23 @@ const FeaturedBlogs = () => {
               ))}
             </Table.Body>
           </Table>
-          <div className="join flex justify-center items-center pt-5">
-            <button
-              onClick={handlePrev}
-              disabled={currentPage === 1}
-              className="join-item btn hover:btn-primary"
-            >
-              «
-            </button>
-            <button className="join-item btn">Page {currentPage}</button>
-            <button
-              onClick={handleNext}
-              disabled={currentPage === totalPage}
-              className="join-item btn hover:btn-primary"
-            >
-              »
-            </button>
-          </div>
+        </div>
+        <div className="join flex justify-center items-center pt-5">
+          <button
+            onClick={handlePrev}
+            disabled={currentPage === 1}
+            className="join-item btn hover:btn-primary"
+          >
+            «
+          </button>
+          <button className="join-item btn">Page {currentPage}</button>
+          <button
+            onClick={handleNext}
+            disabled={currentPage === totalPage}
+            className="join-item btn hover:btn-primary"
+          >
+            »
+          </button>
         </div>
       </div>
     </div>
