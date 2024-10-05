@@ -42,13 +42,11 @@ const AddBlog = () => {
       });
   };
   return (
-    <div className="md:mt-20 mb-10">
-      <section className="p-6 bg-gray-100 text-gray-900">
+    <div className="lg:pt-16">
+      <section className="md:p-6 lg:p-0 text-gray-900">
         <form
           onSubmit={handleSubmit}
-          noValidate=""
-          action=""
-          className="container font-Fraunces flex flex-col mx-auto space-y-12"
+          className="container flex flex-col mx-auto space-y-12"
         >
           <fieldset className="grid grid-cols-4 gap-4 p-6 rounded-md shadow-sm bg-gray-50">
             <div className="space-y-2 mt-4 col-span-full lg:col-span-1">

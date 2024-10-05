@@ -6,7 +6,7 @@ const FeaturedBlogs = () => {
   const bigger = blogs.sort((a, b) => b - a).slice(0, 10);
 
   return (
-    <div className="mt-5  md:w-[1320px] w-[345px] mx-auto">
+    <div className="mt-5  lg:w-[1320px] md:w-[680px] w-[345px] mx-auto">
       <h1 className="text-center uppercase  font-semibold text-2xl mb-8">
         Top <span className="text-blue-500">10</span> Blog
       </h1>

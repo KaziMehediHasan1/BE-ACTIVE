@@ -34,7 +34,7 @@ export function Navbars() {
   return (
     <nav className="flex items-center justify-between font-primary lg:px-10 px-5 p-3 text-gray-800 z-50  w-full transition-all duration-500 top-0 bg-white">
       <Link to="/" className="text-2xl font-primary font-semibold">
-        Be Active
+        <span className="text-3xl text-blue-600">Be</span> Active
       </Link>
       <button
         onClick={handleToggleMenu}

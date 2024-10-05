@@ -37,24 +37,21 @@ const UpdateBlogs = () => {
     blogs;
 
   return (
-    <div className="mt-10 mb-10">
-      <h1 className="text-center uppercase mb-5 bg-blue-200 text-black p-4 text-3xl text-white font-Fraunces rounded-md">
-        Update Your Blog
-      </h1>
-      <section className="p-6 bg-gray-100 text-gray-900">
+    <div className="lg:pt-20">
+      <section className="p-5 text-gray-900">
         <form
           onSubmit={handleUpdate}
-          className="container font-Fraunces flex flex-col mx-auto space-y-12"
+          className="container flex flex-col mx-auto space-y-12"
         >
           <fieldset className="grid grid-cols-4 gap-4 p-6 rounded-md shadow-sm bg-gray-50">
             <div className="space-y-2 mt-4 col-span-full lg:col-span-1">
-              <img src={update} alt="" />
+              <img src={update} className="w-[650px] h-[400px]"/>
             </div>
 
             {/* Input Field */}
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-              <div className="col-span-full w-full sm:col-span-4">
-                <label htmlFor="firstname" className="text-sm font-semibold">
+              <div className="col-span-full w-full md:col-span-4">
+                <label className="text-sm font-semibold">
                   Blog Title
                 </label>
                 <input
@@ -67,8 +64,8 @@ const UpdateBlogs = () => {
                   className="w-full hover:bg-blue-100 rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-sky-600 border-gray-300"
                 />
               </div>
-              <div className="col-span-full  sm:col-span-1 w-full">
-                <label htmlFor="lastname" className="text-sm font-semibold">
+              <div className="col-span-full  md:col-span-2 lg:col-span-1">
+                <label className="text-sm font-semibold">
                   Category
                 </label>
                 <div>
@@ -96,8 +93,8 @@ const UpdateBlogs = () => {
                   </select>
                 </div>
               </div>
-              <div className="col-span-5 sm:col-span-4">
-                <label htmlFor="email" className="text-sm font-semibold">
+              <div className="col-span-full lg:col-span-5 md:col-span-6">
+                <label  className="text-sm font-semibold">
                   Short Description
                 </label>
                 <input
@@ -110,7 +107,7 @@ const UpdateBlogs = () => {
                   className="w-full rounded-md hover:bg-blue-100  focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-sky-600 border-gray-300"
                 />
               </div>
-              <div className="col-span-4">
+              <div className="lg:col-span-5 col-span-6">
                 <label htmlFor="address" className="text-sm font-semibold">
                   Long Description
                 </label>
@@ -124,7 +121,7 @@ const UpdateBlogs = () => {
                   className="w-full hover:bg-blue-100  rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-sky-600 border-gray-300"
                 />
               </div>
-              <div className="col-span-4">
+              <div className="lg:col-span-5 col-span-full">
                 <label htmlFor="address" className="text-sm font-semibold">
                   PhotoURL
                 </label>
@@ -139,10 +136,10 @@ const UpdateBlogs = () => {
                 />
               </div>
               <br />
-              <div className="col-span-full w container space-x-4 sm:col-span-2">
+              <div className="col-span-full container space-x-4 lg:col-span-5">
                 <button
                   type="submit"
-                  className="my-4 w-full p-2 px-6 font-semibold rounded bg-blue-500 hover:bg-blue-300 hover:text-black shadow-lg text-gray-100"
+                  className="lg:my-4 w-full p-2 px-6 font-semibold rounded bg-blue-500 hover:bg-blue-300 hover:text-black shadow-lg text-gray-100"
                 >
                   Update
                 </button>

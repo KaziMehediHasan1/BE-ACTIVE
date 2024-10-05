@@ -198,7 +198,7 @@ const Home = () => {
         <h1 className="font-bold text-center lg:text-3xl text-2xl  uppercase  mt-10">
           Our Activity
         </h1>
-        <section className="md:p-16 p-10 my-6 bg-gray-100 text-gray-800">
+        <section className="md:p-16 p-10 my-6 bg-gray-200 text-gray-800">
           <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">
             <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-gray-50 text-gray-800">
               <div className="flex justify-center items-center p-2 align-middle rounded-lg sm:p-4 bg-violet-600">
