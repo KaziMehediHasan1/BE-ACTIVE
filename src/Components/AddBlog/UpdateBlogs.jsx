@@ -1,11 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import update from "../../assets/update.jpg";
 import { toast } from "react-toastify";
-import { useContext } from "react";
-import { AuthContext } from "../AuthProvider/AuthProvider";
 const UpdateBlogs = () => {
   const blogs = useLoaderData();
-  // const { loading } = useContext(AuthContext);
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,7 +11,6 @@ const UpdateBlogs = () => {
     const shortDescription = form.shortDescription.value;
     const longDescription = form.LongDescription.value;
     const photoURL = form.photoURL.value;
-    // console.log(formCategory);
     const UpdatedData = {
       title,
       category,

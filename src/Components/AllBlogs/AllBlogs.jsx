@@ -10,12 +10,7 @@ const AllBlogs = () => {
   const { user } = useContext(AuthContext);
   const [title, setTitle] = useState("");
   const navigate = useNavigate();
-  const {
-    data: blogs = [],
-    isLoading,
-    isError,
-    error,
-  } = useQuery({
+  const { data: blogs = [], isLoading } = useQuery({
     queryKey: ["AllBlogs", filter, title],
     queryFn: async () => {
       const { data } = await axios(
@@ -33,9 +28,10 @@ const AllBlogs = () => {
     setTitle(title);
   };
 
-  console.log("data", blogs, isLoading);
-
-  console.log(blogs);
+  const handleReset = (e) => {
+    e.preventDefault();
+    setFilter("");
+  };
   const handleAddWishList = (id) => {
     const blog = blogs.find((item) => item._id == id);
     const { title, longDescription, photoURL, shortDescription } = blog;
@@ -66,7 +62,7 @@ const AllBlogs = () => {
 
   if (isLoading) {
     return (
-      <p className="mt-52 flex justify-center ">
+      <p className="mt-52 flex justify-center">
         <span className="loading loading-ball loading-xs"></span>
         <span className="loading loading-ball loading-sm"></span>
         <span className="loading loading-ball loading-md"></span>
@@ -75,22 +71,22 @@ const AllBlogs = () => {
     );
   }
   return (
-    <div className="container">
+    <div className="lg:w-[1320px] md:w-[710px] w-[390px] mx-auto">
       {/* Search Bar.. */}
-      <div className="sm:grid lg:flex justify-center  rounded-md mt-10 space-x-3">
-        <form onSubmit={handleSearch}>
-          <div className="flex p-2 rounded-lg lg:focus-within:ring ">
-            <input
-              className="px-6 mr-2 border rounded-md text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
-              type="text"
-              name="search"
-              placeholder="Blog Title"
-            />
-
-            <button className="px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-300 font-Fraunces hover:text-black focus:bg-gray-600 focus:outline-none">
-              Search
-            </button>
-          </div>
+      <div className="grid grid-cols-2 mt-10 space-x-14 lg:w-[1200px] md:w-[560px] w-[340px] mx-auto ">
+        <form className="flex mx-auto p-2 rounded-lg lg:focus-within:ring w-full ">
+          <input
+            className="px-6 mr-2 border rounded-md text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent w-[130px] md:w-full"
+            type="text"
+            name="search"
+            placeholder="search by title"
+          />
+          <button
+            onSubmit={handleSearch}
+            className="px-1 md:px-4  md:py-3  text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-300 hover:text-black focus:bg-gray-600 focus:outline-none"
+          >
+            Search
+          </button>
         </form>
         <div className="flex items-center">
           <select
@@ -98,7 +94,7 @@ const AllBlogs = () => {
             value={filter}
             name="category"
             id="category"
-            className="border p-2 mr-2 rounded-lg"
+            className="border p-2 lg:mr-2 rounded-lg md:w-full w-[120px]"
           >
             <option value="">Filter By Category</option>
             <option value="Education">Education</option>
@@ -106,54 +102,58 @@ const AllBlogs = () => {
             <option value="Health">Health</option>
             <option value="Travel">Travel</option>
           </select>
-          <button className="px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-300 font-Fraunces hover:text-black focus:bg-gray-600 focus:outline-none">
+          <button
+            onClick={handleReset}
+            className="px-1 ml-2 hidden md:block md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-300 hover:text-black focus:bg-gray-600 focus:outline-none"
+          >
             Reset
           </button>
         </div>
       </div>
 
-      <div className="font-Fraunces border border-blue-300 shadow-lg rounded-lg  grid lg:grid-cols-3 md:grid-cols-2 gap-10 bg-gray-100 p-6 shadow-blue-100 mt-4">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 lg:p-6 md:p-0 mt-4">
         {blogs?.map((blog) => (
           <div
             key={blog._id}
-            className="md:flex md:justify-center rounded-md p-4 lg:shadow-lg"
+            className="md:flex md:justify-center rounded-md p-4"
           >
-            <div className="lg:w-96 md:w-[950px] md:h-[550px] lg:h-[530px] ml-4 mt-2 rounded-md shadow-lg shadow-black-100 bg-gray-50">
+            <div className="lg:w-[850px] md:w-[560px] lg:h-[550px] h-[470px] mx-auto ml-4 mt-2 rounded-md shadow-lg shadow-black-100 bg-gray-50">
               <motion.img
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 2, y: 0 }}
                 transition={{ delay: 1, duration: 1 }}
                 src={blog?.photoURL}
-                alt=""
                 className="object-cover object-center w-full p-2 rounded-t-md h-72"
               />
-              <div className="flex flex-col justify-between p-6 space-y-8">
-                <div className="space-y-2">
-                  {/* title */}
+              <div className="flex flex-col justify-between p-6 lg:space-y-8 space-y-6">
+                <div className="lg:space-y-2">
                   <h2
                     title={blog?.title}
-                    className="text-3xl hover:underline font-semibold tracking-wide"
+                    className="lg:text-3xl text-xl hover:underline font-semibold tracking-wide"
                   >
                     {blog?.title.substring(0, 15)}
                   </h2>
-                  {/* category */}
-                  <p title={blog.shortDescription} className="text-gray-800">
-                    {blog?.shortDescription.substring(0, 80)}...
+
+                  <p
+                    title={blog.shortDescription}
+                    className="text-gray-800 text-sm lg:text-xl"
+                  >
+                    {blog?.shortDescription.substring(0, 50)}...
                   </p>
-                  {/* Short Description */}
-                  <p className="text-red-500 font-semibold">{blog?.category}</p>
+                  <p className="text-red-500 font-semibold text-sm lg:text-xl">
+                    {blog?.category}
+                  </p>
                 </div>
-                {/* button */}
                 <div className="flex space-x-3">
                   <NavLink
                     to={`/blogDetails/${blog._id}`}
-                    className="flex  items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-blue-500 text-gray-50"
+                    className="flex  items-center justify-center w-full lg:p-3 p-1 font-semibold tracking-wide rounded-md bg-blue-500 text-gray-50"
                   >
                     Details
                   </NavLink>
                   <button
                     onClick={() => handleAddWishList(blog._id)}
-                    className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-blue-500 text-gray-50"
+                    className="flex items-center justify-center w-full lg:p-3 font-semibold tracking-wide rounded-md bg-blue-500 text-gray-50"
                   >
                     Wishlist
                   </button>

@@ -4,26 +4,28 @@ const FeaturedBlogs = () => {
   const allBlogs = useLoaderData();
   const blogs = allBlogs.filter((blog) => blog.longDescription.length);
   const bigger = blogs.sort((a, b) => b - a).slice(0, 10);
-  console.log(allBlogs);
 
   return (
-    <div className="mt-10">
-      <h1 className="text-center uppercase font-Fraunces font-semibold text-2xl mb-8">
+    <div className="mt-5  md:w-[1320px] w-[345px] mx-auto">
+      <h1 className="text-center uppercase  font-semibold text-2xl mb-8">
         Top <span className="text-blue-500">10</span> Blog
       </h1>
 
-      <div className="mt-10 font-Fraunces bg-blue-50 border border-blue-500 rounded-lg p-4">
-         <div className="overflow-x-auto w-[1500px]">
-            <Table striped>
-              <Table.Head>
-                <Table.HeadCell>Serial</Table.HeadCell>
-                <Table.HeadCell>Title</Table.HeadCell>
-                <Table.HeadCell>Owner</Table.HeadCell>
-                <Table.HeadCell>Profile</Table.HeadCell>
-              </Table.Head>
-
-              <Table.Body className="divide-y">
-                {bigger.map((blog, index)=><Table.Row key={blog._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+      <div className="mt-10  bg-blue-50 border  border-blue-500 rounded-lg p-4">
+        <div className="overflow-x-auto">
+          <Table striped>
+            <Table.Head>
+              <Table.HeadCell>Serial</Table.HeadCell>
+              <Table.HeadCell>Title</Table.HeadCell>
+              <Table.HeadCell>Owner</Table.HeadCell>
+              <Table.HeadCell>Profile</Table.HeadCell>
+            </Table.Head>
+            <Table.Body className="divide-y">
+              {bigger.map((blog, index) => (
+                <Table.Row
+                  key={blog._id}
+                  className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                >
                   <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                     {index + 1}
                   </Table.Cell>
@@ -32,10 +34,11 @@ const FeaturedBlogs = () => {
                   <Table.Cell>
                     <Avatar img={blog?.users?.userPhoto} />
                   </Table.Cell>
-                </Table.Row>)}
-              </Table.Body>
-            </Table>
-          </div>
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        </div>
       </div>
     </div>
   );

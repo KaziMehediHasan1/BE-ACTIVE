@@ -1,8 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-// import axios from "axios";
-// import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { Label, Textarea } from "flowbite-react";
 
@@ -11,15 +9,6 @@ const BlogDetails = () => {
   const { user } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const { id } = useParams();
-  // const { data: blogs } = useQuery({
-  //   queryKey: ["blogDetails"],
-  //   queryFn: async () => {
-  //     const { data } = await axios(
-  //       `${import.meta.env.VITE_API_URL}/addBlogs/${id}`
-  //     );
-  //     return data;
-  //   },
-  // });
 
   const {
     photoURL,
@@ -62,35 +51,32 @@ const BlogDetails = () => {
       .then((data) => setData(data));
   }, [data]);
   const AllComment = data.filter((comment) => comment.users?.detailsId === id);
-  // const commentUser = AllComment.map(comment=> comment)
-  console.log(AllComment);
-
   return (
-    <div className="container mt-10 md:p-8 p-6">
-      <div className="mx-auto text-center">
-        <h1 className="text-4xl font-semibold font-Fraunces">{title}</h1>
-        <img className="mx-auto mt-4 lg:w-[1080px]" src={photoURL} alt="" />
+    <div className="lg:w-[1320px] md:w-[710px] w-[390px] mx-auto mt-1 md:p-8 p-6">
+      <div className="text-center">
+        <img
+          className="mx-auto mt-4 lg:w-[1000px] w-[500px] h-[380px] lg:h-[700px] rounded-lg"
+          src={photoURL}
+        />
+        <h1 className="text-4xl font-semibold mt-2">{title}</h1>
         <p className="mt-4 text-2xl font-semibold">{shortDescription}</p>
-        <p className="mt-4 font-Fraunces">{longDescription}</p>
+        <p className="mt-4 ">{longDescription}</p>
       </div>
 
-      {/* update blog button */}
-      <div className="mt-6 flex justify-end mr-10">
-        {user?.email === blogs.users.userMail ? (
+      <div className="mt-5 flex justify-end ">
+        {user?.email === blogs.users.userMail && (
           <Link
             to={`/updateBlog/${detailsId}`}
             className="bg-blue-400 p-2 px-8 text-white rounded-md"
           >
             <button>Blog Update</button>
           </Link>
-        ) : (
-          ""
         )}
       </div>
 
       <hr className="mt-6 ml-10 mr-10 to-blue-600" />
 
-      <div className="mt-10  ml-10">
+      <div className="mt-10 ">
         <form onSubmit={handleAddComment} className="max-w-md">
           <div className="mb-2 block">
             <Label htmlFor="comment" value="Your comment" />
@@ -102,12 +88,12 @@ const BlogDetails = () => {
             required
             rows={4}
           />
-          <button className="bg-blue-400 mt-2 p-1 hover:shadow-md hover:bg-blue-600 rounded-md text-white font-Fraunces">
+          <button className="bg-blue-400 mt-2 p-1 hover:shadow-md hover:bg-blue-600 rounded-md text-white">
             Comment
           </button>
         </form>
 
-        <div className="mt-6 space-y-5 rounded-lg bg-red-100 p-4 w-[32%]">
+        <div className="mt-6 space-y-5 rounded-lg bg-red-100 lg:p-4 w-[100%]">
           {AllComment.map((comment) => (
             <div key={comment._id} className="flex items-center gap-x-2">
               <img

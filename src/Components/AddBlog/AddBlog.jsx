@@ -42,7 +42,7 @@ const AddBlog = () => {
       });
   };
   return (
-    <div className="mt-20 mb-10">
+    <div className="md:mt-20 mb-10">
       <section className="p-6 bg-gray-100 text-gray-900">
         <form
           onSubmit={handleSubmit}
@@ -52,13 +52,13 @@ const AddBlog = () => {
         >
           <fieldset className="grid grid-cols-4 gap-4 p-6 rounded-md shadow-sm bg-gray-50">
             <div className="space-y-2 mt-4 col-span-full lg:col-span-1">
-              <img src={write} alt="" />
+              <img src={write} className="w-full" />
             </div>
 
             {/* Input Field */}
-            <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-              <div className="col-span-full w-full sm:col-span-4">
-                <label htmlFor="firstname" className="text-sm font-semibold">
+            <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 ">
+              <div className="col-span-full md:col-span-4 lg:col-span-2">
+                <label  className="text-sm font-semibold">
                   Blog Title
                 </label>
                 <input
@@ -70,8 +70,8 @@ const AddBlog = () => {
                   className="w-full hover:bg-blue-100 rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-sky-600 border-gray-300"
                 />
               </div>
-              <div className="col-span-full  sm:col-span-1 w-full">
-                <label htmlFor="lastname" className="text-sm font-semibold">
+              <div className="col-span-full  sm:col-span-2 w-full">
+                <label className="text-sm font-semibold">
                   Category
                 </label>
                 <div>
@@ -98,7 +98,7 @@ const AddBlog = () => {
                   </select>
                 </div>
               </div>
-              <div className="col-span-5 sm:col-span-4">
+              <div className="col-span-full lg:col-span-4 w-full">
                 <label htmlFor="email" className="text-sm font-semibold">
                   Short Description
                 </label>
@@ -108,10 +108,10 @@ const AddBlog = () => {
                   required
                   name="sDescription"
                   placeholder="Enter a short Description"
-                  className="w-full rounded-md hover:bg-blue-100  focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-sky-600 border-gray-300"
+                  className="w-full rounded-md col-span-full hover:bg-blue-100  focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-sky-600 border-gray-300"
                 />
               </div>
-              <div className="col-span-4">
+              <div className="lg:col-span-4 col-span-full">
                 <label htmlFor="address" className="text-sm font-semibold">
                   Long Description
                 </label>
@@ -124,7 +124,7 @@ const AddBlog = () => {
                   className="w-full hover:bg-blue-100  rounded-md focus:ring focus:ring-opacity-75 text-gray-900 focus:ring-sky-600 border-gray-300"
                 />
               </div>
-              <div className="col-span-4">
+              <div className="lg:col-span-4 col-span-full">
                 <label htmlFor="address" className="text-sm font-semibold">
                   PhotoURL
                 </label>
@@ -138,7 +138,7 @@ const AddBlog = () => {
                 />
               </div>
               <br />
-              <div className="col-span-full w container space-x-4 sm:col-span-2">
+              <div className="col-span-full  container space-x-4 sm:col-span-4">
                 <button
                   type="submit"
                   className="my-4 w-full p-2 px-6 font-semibold rounded bg-blue-500 hover:bg-blue-300 hover:text-black shadow-lg text-gray-100"

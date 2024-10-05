@@ -8,7 +8,6 @@ const HomePageCard = () => {
   const blogs = useLoaderData();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(blogs);
   const handleAddWishList = (id) => {
     if (user) {
       const blog = blogs.find((item) => item._id == id);
@@ -44,50 +43,47 @@ const HomePageCard = () => {
   };
   return (
     <div className="mt-8">
-      <h1 className="font-bold text-center lg:text-4xl sm:text-2xl uppercase font-Fraunces">Recent Blogs</h1>
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-8 md:grid-cols-2 bg-gray-100 mt-8 rounded-md p-4">
+      <h1 className="font-bold text-center lg:text-3xl text-2xl uppercase">
+        Recent Blogs
+      </h1>
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-8 md:grid-cols-2 bg-gray-100 mt-4 md:mt-7 rounded-md p-8">
         {blogs.slice(0, 6).map((blog) => (
-          <div
-            key={blog._id}
-            data-aos="fade-right"
-            className="  rounded-md p-4 shadow-lg"
-          >
-            <div className="w-96 h-[530px] ml-4 mt-2 rounded-md shadow-lg shadow-black-100 bg-gray-50">
+          <div key={blog._id} data-aos="fade-right">
+            <div className="lg:w-96 lg:h-[560px] ml-2 shadow-md">
               <motion.img
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 2, y: 0 }}
                 transition={{ delay: 1, duration: 1 }}
                 src={blog.photoURL}
-                alt=""
-                className="object-cover object-center w-full p-2 rounded-t-md h-72"
+                className="object-cover object-center w-full p-2 h-72 "
               />
+
               <div className="flex flex-col justify-between p-6 space-y-8">
                 <div className="space-y-2">
-                  {/* title */}
                   <h2
                     title={blog.title}
-                    className="text-3xl font-bold capitalize tracking-wide"
+                    className="lg:text-3xl text-2xl font-bold capitalize tracking-wide"
                   >
                     {blog.title.substring(0, 15)}
                   </h2>
-                  {/* category */}
-                  <p title={blog.shortDescription} className="text-gray-800">
+                  <p
+                    title={blog.shortDescription}
+                    className="text-gray-800 text-sm lg:text-xl"
+                  >
                     {blog.shortDescription.substring(0, 80)}...
                   </p>
-                  {/* Short Description */}
-                  <p className="text-red-500 font-semibold">{blog.category}</p>
+                  <p className="text-blue-500 font-semibold">{blog.category}</p>
                 </div>
-                {/* button */}
                 <div className="flex space-x-3">
                   <NavLink
                     to={`/blogDetails/${blog._id}`}
-                    className="flex  items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-blue-500 text-gray-50"
+                    className="flex  items-center justify-center lg:w-full w-44 p-2 font-semibold tracking-wide rounded-md bg-blue-500 text-gray-50"
                   >
                     Details
                   </NavLink>
                   <button
                     onClick={() => handleAddWishList(blog._id)}
-                    className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-blue-500 text-gray-50"
+                    className="flex items-center justify-center lg:w-full w-44 p-2 tracking-wide rounded-md bg-blue-500 text-gray-50"
                   >
                     Wishlist
                   </button>
