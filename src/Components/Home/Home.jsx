@@ -154,7 +154,7 @@ const Home = () => {
                   <img src={edu} />
                 </figure>
                 <div className="card-body flex justify-center items-center">
-                  <h2 className="card-title text-orange-400 text-2xl">
+                  <h2 className="card-title text-xl">
                     Education
                   </h2>
                 </div>
@@ -167,7 +167,7 @@ const Home = () => {
                   <img src={health} />
                 </figure>
                 <div className="card-body flex justify-center items-center">
-                  <h2 className="card-title text-orange-400 text-2xl">
+                  <h2 className="card-title text-xl">
                     Health
                   </h2>
                 </div>
@@ -180,7 +180,7 @@ const Home = () => {
                   <img src={tech} />
                 </figure>
                 <div className="card-body flex justify-center items-center">
-                  <h2 className="card-title text-2xl text-orange-400">Tech</h2>
+                  <h2 className="card-title text-xl">Tech</h2>
                 </div>
               </div>
             </NavLink>
