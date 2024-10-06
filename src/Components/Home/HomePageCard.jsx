@@ -47,7 +47,7 @@ const HomePageCard = () => {
         Recent Blogs
       </h1>
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-8 md:grid-cols-2 bg-gray-100 mt-4 md:mt-7 rounded-md p-8">
-        {blogs.slice(0, 6).map((blog) => (
+        {blogs?.slice(0, 6)?.map((blog) => (
           <div key={blog._id} data-aos="fade-right">
             <div className="lg:w-96 lg:h-[560px] ml-2 shadow-md">
               <motion.img

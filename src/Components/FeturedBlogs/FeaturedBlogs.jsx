@@ -9,7 +9,7 @@ const FeaturedBlogs = () => {
   const totalPage = Math.ceil(blogs.length / itemsPerPage);
   const indexLastItem = currentPage * itemsPerPage;
   const indexFirstItem = indexLastItem - itemsPerPage;
-  const currentItems = blogs.slice(indexFirstItem, indexLastItem);
+  const currentItems = blogs?.slice(indexFirstItem, indexLastItem);
   const handlePrev = () => {
     if (currentPage > 1) {
       setCurrentPage((prevPage) => prevPage - 1);
